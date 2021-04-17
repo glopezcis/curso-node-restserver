@@ -34,7 +34,8 @@ const UsuarioSchema = Schema({
 
 // Remove fields from json result
 UsuarioSchema.methods.toJSON = function() {
-  const { __v, password, ...usuario } = this.toObject();
+  const { _id, __v, password, ...usuario } = this.toObject();
+  usuario.uid = _id;
   return usuario;
 }
 
